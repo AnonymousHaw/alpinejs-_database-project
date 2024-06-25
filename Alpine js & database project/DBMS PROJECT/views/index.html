@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script type="" src="app.js"></script>
+    <style>
+        table,
+        th,
+        tr,
+        td {
+            border-collapse: collapse;
+            border: 1px solid #808080;
+        }
+
+        td {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .line {
+            border: 1px solid #d3d3d3;
+        }
+    </style>
+    <title>TASK 3: </title>
+</head>
+
+<body x-data="App()" x-init="getfaculties()" class="p-10">
+    <div style="display: flex;">
+        <div class="ml-8 mt-16 xxl:mt-0 xxl:ml-auto line" x-show="page === 1">
+            <h4 class="font-bold text-lg">Faculties</h4>
+            <table>
+                <tr>
+                    <th>Faculty_id</th>
+                    <th>Faculty_name</th>
+                </tr>
+                <template x-for="faculty in faculties ">
+                    <tr>
+                        <td class="px-3" x-text="faculty.fid"></td>
+                        <td class="px-3">
+                            <a href="#" x-text="faculty.name" class="underline text-orange-500"
+                                @click=getCourses(faculty.fid)></a>
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+        <div class="ml-8 mt-16 xxl:mt-0 xxl:ml-auto line" x-show="page === 2">
+            <h4 class="font-bold text-lg">Courses</h4>
+            <table>
+                <tr>
+                    <th>fid</th>
+                    <th>cid</th>
+                    <th>Code</th>
+                    <th>Title</th>
+                    <th>Class</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                </tr>
+                <template x-for="course in t_courses">
+                    <tr>
+                        <td class="px-3" x-text="course.fid"></td>
+                        <td class="px-3">
+                            <a href="#" x-text="course.cid" class="underline text-orange-500"
+                            @click=getTeacherComments(course.cid)> </a></td>
+                        <td class="px-3" x-text="course.code"></td>
+                        <td class="px-3" x-text="course.title"></td>
+                        <td class="px-3" x-text="course.Class"></td>
+                        <td class="px-3" x-text="course.Semester"></td>
+                        <td class="px-3" x-text="course.Year"></td>
+                        
+                            
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+    </div>
+        <div class="ml-8 mt-16 xxl:mt-0 xxl:ml-auto line" x-show="page === 3">
+            <h4 class="font-bold text-lg">Evaluation Criteria</h4>
+            <table>
+                <tr>
+                    <th>Total_Students</th>
+                    <th>FGradeStudents</th>
+                    <th>EvaluationCriteria</th>
+                </tr>
+                <template x-for="comment in t_comments">
+                    <tr>
+                        <td class="px-3" x-text="comment.TotalStudents"></td>
+                        <td class="px-3" x-text="comment.FGradeStudents"></td>
+                        <td class="px-3" x-text="comment.EvaluationCriteria"></td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html
